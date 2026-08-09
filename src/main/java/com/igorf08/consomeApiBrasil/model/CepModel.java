@@ -3,7 +3,7 @@ package com.igorf08.consomeApiBrasil.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(schema = "consomeapibrasil", name = "tb_ceps")
+@Table(schema = "consome_api_brasil", name = "tb_ceps")
 public class CepModel {
 
     @Id
@@ -17,16 +17,22 @@ public class CepModel {
     private String city;
     private String neighborhood;
     private String street;
+    private String timezoneName;
+    private String longitude;
+    private String latitude;
 
     public CepModel() {
     }
 
-    public CepModel(String cep, String state, String city, String neighborhood, String street) {
+    public CepModel(String cep, String state, String city, String neighborhood, String street, String timezoneName, String longitude, String latitude) {
         this.cep = cep;
         this.state = state;
         this.city = city;
         this.neighborhood = neighborhood;
         this.street = street;
+        this.timezoneName = timezoneName;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public Integer getId() {
@@ -75,5 +81,29 @@ public class CepModel {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getTimezoneName() {
+        return timezoneName;
+    }
+
+    public void setTimezoneName(String timezoneName) {
+        this.timezoneName = timezoneName;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 }
