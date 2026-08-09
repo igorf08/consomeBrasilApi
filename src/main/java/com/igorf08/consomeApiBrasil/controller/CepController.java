@@ -23,11 +23,19 @@ public class CepController {
     };
 
     @GetMapping("/consulta-cep/buscar")
-    public String buscarCep(@RequestParam(value = "cep", required = false) String cep, Model model) {
+    public String buscarCep(
+            @RequestParam(value = "cep", required = false) String cep,
+            @RequestParam(value  = "detalhada", defaultValue = "false") Boolean detalhada,
+            Model model) {
         if (cep != null && !cep.isBlank()) {
             CepResponseDTO resultado = cepService.buscaCep(cep);
             model.addAttribute("resultadoCep", resultado);
         }
+
+        if (detalhada == true) {
+            model.addAttribute("detalhada", detalhada);
+        }
+
         return "busca-cep";
     };
 
