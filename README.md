@@ -1,4 +1,4 @@
-# 🇧🇷 Consome API Brasil
+# Consome API Brasil
 
 ![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=java)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-6DB33F?style=for-the-badge&logo=spring)
@@ -6,32 +6,29 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-Uma aplicação Web elegante e de alto desempenho desenvolvida em **Spring Boot** para consultas de dados estruturados em APIs do governo/serviços públicos brasileiros, como CEPs e CNPJs. 
+Aplicação web em Spring Boot para consultar dados públicos brasileiros (como CEP e CNPJ) consumindo APIs externas, com renderização server-side via Thymeleaf e estilização com Tailwind CSS.
 
-Este projeto foi desenhado com o objetivo de demonstrar boas práticas de arquitetura backend com Java, juntamente com uma interface de usuário inspirada em SAAS modernos. O deploy foi feito utilizando **Docker**.  
+O objetivo do projeto foi praticar integração com serviços externos, estruturação de camadas no backend e empacotamento com Docker.
 
 <img src="https://i.imgur.com/j0pgA6G.png" alt="Tela inicial do projeto" width="100%">
 
 ---
 
-## ✨ Features
+## 📌 O que a aplicação faz
 
-- 🔎 **Consulta de CEP**: Busque informações de endereços usando o CEP.
-- 🏢 **Consulta de CNPJ**: Dados cadastrais da Receita Federal como Razão Social, Porte, Endereço e E-mail.
-- 🎨 **Interface Moderna**: UI projetada com *Tailwind CSS* seguindo a estética "Glassmorphism" e Terminal Dark Mode.
-- 📱 **Totalmente Responsivo**: Experiência fluida tanto no Desktop quanto no Mobile.
-- 🐳 **Pronto para Nuvem**: A aplicação roda dentro de um container Docker, garantindo o mesmo comportamento em qualquer ambiente.
+- **Consulta de CEP**: Busca logradouro, bairro, cidade e estado a partir do CEP digitado.
+- **Consulta de CNPJ**: Retorna dados cadastrais da Receita Federal (razão social, porte, endereço, status e contato).
+- **Interface no terminal/dark mode**: Layout escuro construído com Tailwind CSS e adaptado para telas mobile e desktop.
+- **Feedback de erros na tela**: Mensagens amigáveis para CEPs/CNPJs inválidos ou não localizados na base.
 
 ---
 
-## 🛠️ Arquitetura e Padrões Aplicados
+## 🧱 Decisões técnicas e arquitetura
 
-O projeto não se resume apenas a fazer chamadas HTTP. A base de código foi cuidadosamente construída seguindo Padrões de Projeto e Clean Code:
-
-- **DTO Pattern (Data Transfer Object)**: Uso do recurso `records` do Java 14+ para separar o que é tráfego da API (`ResponseDTO`) do que é visualizado pelo thymeleaf (`ViewDTO`), garantindo imutabilidade e economia de recursos.
-- **Service Layer**: Toda lógica de negócios e chamadas externas (via `RestTemplate`) centralizadas, retirando a complexidade dos Controllers.
-- **Tratamento com `@ControllerAdvice`**: Tratamento global de exceções. Sem blocos `try/catch` repetitivos. Os erros (ex: 404 - CEP Inexistente) são capturados e mapeados graciosamente para a View, mantendo o "Happy Path" nos Controllers.
-- **Utils sem Estado (Stateless)**: Formatações de strings complexas foram movidas para classes Utilitárias com métodos `static`, aliviando o Thymeleaf e mantendo a responsabilidade no Java.
+- **Java Records para DTOs**: Uso de `record` para separar o payload que vem da API externa (`ResponseDTO`) do objeto que o Thymeleaf consome (`ViewDTO`), mantendo imutabilidade sem boilerplate.
+- **Camada de Serviço Isolada**: As chamadas HTTP via `RestTemplate` e as regras de transformação dos dados ficam nos Services, deixando os Controllers responsáveis apenas por receber a requisição e devolver a view.
+- **Tratamento Global de Erros com `@ControllerAdvice`**: Centraliza o tratamento de exceções (como 404 de registros inexistentes ou falhas na API externa) sem poluir o código com `try/catch` em todo endpoint.
+- **Helpers Utilitários**: Métodos estáticos para formatação de máscaras (CPF, CNPJ, CEP) e strings, evitando lógica complexa direto nas tags do Thymeleaf.
 
 ---
 
