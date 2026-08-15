@@ -15,6 +15,8 @@ CREATE TABLE tb_ceps (
 CREATE TABLE tb_cnpjs (
     id SERIAL PRIMARY KEY,
     cnpj VARCHAR(20) UNIQUE NOT NULL,
+    razao_social VARCHAR(100),
+    nome_fantasia VARCHAR(100),
     uf VARCHAR(2),
     cep VARCHAR(10),
     email VARCHAR(150),
@@ -22,5 +24,7 @@ CREATE TABLE tb_cnpjs (
     bairro VARCHAR(100),
     municipio VARCHAR(100),
     logradouro VARCHAR(150),
+    descricao_tipo_de_logradouro VARCHAR(20),
+    descricao_situacao_cadastral VARCHAR(25),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

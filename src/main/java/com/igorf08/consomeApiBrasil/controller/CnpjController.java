@@ -22,11 +22,18 @@ public class CnpjController {
     }
 
     @GetMapping("/consulta-cnpj/buscar")
-    public String buscarCnpj(@RequestParam(name = "cnpj") String cnpj, Model model) {
+    public String buscarCnpj(
+            @RequestParam(name = "cnpj") String cnpj,
+            @RequestParam(name = "detalhada", defaultValue = "false") Boolean detalhada,
+            Model model) {
 
         if (cnpj != null && !cnpj.isBlank()) {
             CnpjResponseDTO resultado = cnpjService.buscaCnpj(cnpj);
             model.addAttribute("resultadoCnpj", resultado);
+        }
+
+        if (detalhada == true) {
+            model.addAttribute("detalhada", detalhada);
         }
 
         return "busca-cnpj";

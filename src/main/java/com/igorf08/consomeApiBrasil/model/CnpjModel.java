@@ -22,11 +22,15 @@ public class CnpjModel {
     private String bairro;
     private String municipio;
     private String logradouro;
+    private String descricao_tipo_de_logradouro;
+    private String razao_social;
+    private String nome_fantasia;
+    private String descricao_situacao_cadastral;
 
     public CnpjModel() {
     }
 
-    public CnpjModel(String cnpj, String uf, String cep, String email, PorteEnum porte, String bairro, String municipio, String logradouro) {
+    public CnpjModel(String cnpj, String uf, String cep, String email, PorteEnum porte, String bairro, String municipio, String logradouro, String descricao_tipo_de_logradouro, String razao_social, String nome_fantasia, String descricao_situacao_cadastral) {
         this.cnpj = cnpj;
         this.uf = uf;
         this.cep = cep;
@@ -35,6 +39,10 @@ public class CnpjModel {
         this.bairro = bairro;
         this.municipio = municipio;
         this.logradouro = logradouro;
+        this.descricao_tipo_de_logradouro = descricao_tipo_de_logradouro;
+        this.razao_social = razao_social;
+        this.nome_fantasia = nome_fantasia;
+        this.descricao_situacao_cadastral = descricao_situacao_cadastral;
     }
 
     public Integer getId() {
@@ -107,5 +115,37 @@ public class CnpjModel {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public String getDescricao_tipo_de_logradouro() {
+        return descricao_tipo_de_logradouro;
+    }
+
+    public void setDescricao_tipo_de_logradouro(String descricao_tipo_de_logradouro) {
+        this.descricao_tipo_de_logradouro = descricao_tipo_de_logradouro;
+    }
+
+    public String getRazao_social() {
+        return razao_social;
+    }
+
+    public void setRazao_social(String razao_social) {
+        this.razao_social = razao_social;
+    }
+
+    public String getNome_fantasia() {
+        return nome_fantasia;
+    }
+
+    public void setNome_fantasia(String nome_fantasia) {
+        this.nome_fantasia = nome_fantasia;
+    }
+
+    public String getDescricao_situacao_cadastral() {
+        return descricao_situacao_cadastral;
+    }
+
+    public void setDescricao_situacao_cadastral(String descricao_situacao_cadastral) {
+        this.descricao_situacao_cadastral = descricao_situacao_cadastral;
     }
 }
