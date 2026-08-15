@@ -17,7 +17,11 @@ public class CnpjMapper {
                 response.porte(),
                 response.bairro(),
                 response.municipio(),
-                response.logradouro()
+                response.logradouro(),
+                response.descricao_tipo_de_logradouro(),
+                response.descricao_situacao_cadastral(),
+                response.nome_fantasia(),
+                response.razao_social()
             );
         }
 
@@ -30,7 +34,11 @@ public class CnpjMapper {
                     response.getPorte(),
                     response.getBairro(),
                     response.getMunicipio(),
-                    response.getLogradouro()
+                    response.getLogradouro(),
+                    response.getDescricao_tipo_de_logradouro(),
+                    response.getDescricao_situacao_cadastral(),
+                    response.getNome_fantasia(),
+                    response.getRazao_social()
             );
         }
 }

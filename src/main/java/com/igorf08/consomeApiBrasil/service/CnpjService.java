@@ -38,7 +38,11 @@ public class CnpjService {
                     cnpjModel.getPorte(),
                     cnpjModel.getBairro(),
                     cnpjModel.getMunicipio(),
-                    cnpjModel.getLogradouro()
+                    cnpjModel.getLogradouro(),
+                    cnpjModel.getDescricao_tipo_de_logradouro(),
+                    cnpjModel.getDescricao_situacao_cadastral(),
+                    cnpjModel.getNome_fantasia(),
+                    cnpjModel.getRazao_social()
             );
         }
 
@@ -51,8 +55,13 @@ public class CnpjService {
                 responseDTO.porte(),
                 responseDTO.bairro(),
                 responseDTO.municipio(),
-                responseDTO.logradouro()
+                responseDTO.logradouro(),
+                responseDTO.descricao_tipo_de_logradouro(),
+                responseDTO.razao_social(),
+                responseDTO.nome_fantasia(),
+                responseDTO.descricao_situacao_cadastral()
         );
+
         repository.save(cnpjModel);
         return responseDTO;
     };
